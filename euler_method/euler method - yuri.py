@@ -26,3 +26,4 @@ def Euler_Method(func, y0, x0, b, n):
 
     return yi
 
+print(Euler_Method(1, 2, 3, 4, 5))
