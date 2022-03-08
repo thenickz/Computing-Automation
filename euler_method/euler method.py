@@ -1,9 +1,8 @@
-from numpy import linspace
 import matplotlib.pyplot as plt 
-
+from numpy import linspace
 
 def fn(x, y):
-    return (1+4*x) * y**(1/2)
+    return (1 + 4*x) * y**(1/2)
 
 
 def fa(x):
