@@ -1,11 +1,16 @@
 from numpy import linspace
 import matplotlib.pyplot as plt 
 
-def f(function, x, y):
-    return eval(function, {'x': x, 'y': y})
+
+def fn(x, y):
+    return (1+4*x) * y**(1/2)
 
 
-def euler_method(h, x0, x_end, fx_numeric, fx_analytical = None):
+def fa(x):
+    return (x**2 + x/2 + 1)**(1/2)
+
+
+def euler_method(h, y0 ,x0, x_end):
 
     n = int(x_end/h)
 
@@ -15,19 +20,17 @@ def euler_method(h, x0, x_end, fx_numeric, fx_analytical = None):
 
     #defining initial conditions
     x[0] = x0
-    y[0] = 1
+    y[0] = y0
     
     # Euler Method
     for k in range(1, n):
         x[k] = x[k-1] + h
-        y[k] = y[k-1] + h*(f(fx_numeric, x[k-1], y[k-1]))
+        y[k] = y[k-1] + h*(fa(x[k-1], y[k-1]))
 
     # plot graphs
-    if fx_analytical != None:
-        xa = linspace(x[0], x_end, 1000) # x axis for analytical solution
-        ya = eval(fx_analytical) # analytical solution
-        plt.plot(xa, ya, color='red', label = f'Analytical')
-    
+    xa = linspace(x[0], x_end, 1000) # x axis for analytical solution
+    ya = fn(xa, 0) # analytical solution
+    plt.plot(xa, ya, color='red', label = f'Analytical')
     plt.xlabel('x axis')
     plt.ylabel('y axis')
     plt.title('Exercise 1')    
@@ -37,5 +40,4 @@ def euler_method(h, x0, x_end, fx_numeric, fx_analytical = None):
     plt.show()
 
 
-euler_method(0.5, 0, 1, '(1+4*x)*y**(1/2)', '(x**2+x/2+1)**(1/2)')
-
+euler_method(0.5, 1, 0, 1)
