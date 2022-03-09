@@ -27,11 +27,11 @@ def euler_method(h, y0 ,x0, x_end):
     # Euler Method
     for k in range(1, n):
         x[k] = x[k-1] + h
-        y[k] = y[k-1] + h*(fa(x[k-1], y[k-1]))
+        y[k] = y[k-1] + h*(fn(x[k-1], y[k-1]))
 
     # plot graphs
     xa = linspace(x[0], x_end, 1000) # x axis for analytical solution
-    ya = fn(xa, 0) # analytical solution
+    ya = fa(xa) # analytical solution
     plt.plot(xa, ya, color='red', label = f'Analytical')
     plt.xlabel('x axis')
     plt.ylabel('y axis')
