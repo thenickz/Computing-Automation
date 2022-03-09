@@ -10,7 +10,10 @@ def fa(x):
 
 
 def euler_method(h, y0 ,x0, x_end):
-
+    '''h = times it will run
+    y0 = inicial condition
+    x0 = first coordenate
+    x_end = last coordenate'''
     n = int(x_end/h)
 
     # creating arrays full of zeros
