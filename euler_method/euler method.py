@@ -14,7 +14,7 @@ def euler_method(h, y0 ,x0, x_end):
     y0 = inicial condition
     x0 = first coordenate
     x_end = last coordenate'''
-    n = int(x_end/h)
+    n = int(x_end/h) + 1
 
     # creating arrays full of zeros
     x = [0 for _ in range(n)]

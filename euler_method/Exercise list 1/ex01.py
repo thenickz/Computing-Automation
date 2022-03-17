@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 h = 0.5
 t_final = 2
-n = int(t_final/h)
+n = int(t_final/h) + 1
 
 # criando os arrays de zeros
 t = [0 for _ in range(n)]
@@ -24,7 +24,7 @@ plt.plot(t, y, color='orange', label = f'Método de Euler: h = 0.5')
 # Euler Method  h = 0.25
 # reconfig variables
 h = 0.25
-n = int(t_final/h)
+n = int(t_final/h) + 1
 t = [0 for _ in range(n)]
 y = [0 for _ in range(n)]
 t[0] = 0
