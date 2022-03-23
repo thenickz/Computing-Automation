@@ -7,7 +7,7 @@ def fn(x, y):
     return y*(x**3) - (1.5*y)
 
 
-def runge_kutta_2(h, y0 ,x0, x_end):
+def runge_kutta_4(h, y0 ,x0, x_end):
     '''h = "times it will run" (i dont exactly know what the hell happens here)
     y0 = inicial condition
     x0 = first coordenate
@@ -22,18 +22,20 @@ def runge_kutta_2(h, y0 ,x0, x_end):
     x[0] = x0
     y[0] = y0
     
-    # Runge Kutta 2 method
+    # Runge Kutta 4 method
     for k in range(1, n):
-        x[k] = x[k-1] + h 
-        k1 = fn(x[k-1], y[k-1])
-        k2 = fn(x[k-1] + h, y[k-1] + h*k1)
-        y[k] = y[k-1] + h*(k1 + k2)/2
+        x[k] = x[k-1] + h
+        k1 = h*fn(x[k-1], y[k-1])
+        k2 = h*fn(x[k-1] + h/2, y[k-1] + k1/2)
+        k3 = h*fn(x[k-1] + h/2, y[k-1] + k2/2)
+        k4 = h*fn(x[k-1] + h, y[k-1] + k3)
+        y[k] = y[k-1] + (k1 + 2*k2 + 2*k3 + k4)/6
 
     # plot graphs
-    plt.plot(x, y, 'r--o', label = f'Runge Kutta 2 for h={h}')
+    plt.plot(x, y, 'b--o', label = f'Runge Kutta 4 for h={h}')
     plt.xlabel('X axis')
     plt.ylabel('Y axis')
-    plt.title('Runge Kutta 2 Graph')    
+    plt.title('Runge Kutta 4 Graph')    
     plt.legend(loc = 'upper left')
     plt.grid()
     plt.show()
