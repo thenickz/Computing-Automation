@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
-
+# this method works, but i dont know how
 
 def method(t, te, td, L, n, s, alpha, tot):
     
